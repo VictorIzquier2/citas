@@ -30,7 +30,6 @@ const Formulario = ({crearCita}) => {
   const submitCita = (e) => {
     e.preventDefault();
 
-
     // Validar los datos del formulario
     if(mascota.trim() === '' || propietario.trim() === '' || fecha.trim === '' || hora.trim === '' || sintomas.trim === ''){
       actualizarError(true);
@@ -59,13 +58,14 @@ const Formulario = ({crearCita}) => {
 
   return ( 
     <Fragment>
-      <h2>Crear Cita</h2>
-      {error ? <p className='alerta-error'>Todos los campos son obligatorios</p> : null}
+      <h2 data-testid='titulo'>Crear Cita</h2>
+      {error ? <p data-testid='alerta' className='alerta-error'>Todos los campos son obligatorios</p> : null}
       <form
         onSubmit={submitCita}
       >
         <label>Nombre Mascota</label>
         <input
+          data-testid='mascota'
           type='text'
           name='mascota'
           className='u-full-width'
@@ -75,6 +75,7 @@ const Formulario = ({crearCita}) => {
         />
         <label>Propietario</label>
         <input
+          data-testid='propietario'
           type='text'
           name='propietario'
           className='u-full-width'
@@ -84,6 +85,7 @@ const Formulario = ({crearCita}) => {
         />
         <label>Fecha</label>
         <input
+          data-testid='fecha'
           type='date'
           name='fecha'
           className='u-full-width'
@@ -92,6 +94,7 @@ const Formulario = ({crearCita}) => {
         />
         <label>Hora</label>
         <input
+          data-testid='hora'
           type='time'
           name='hora'
           className='u-full-width'
@@ -100,12 +103,14 @@ const Formulario = ({crearCita}) => {
         />
         <label>Síntomas</label>
         <textarea
+          data-testid='sintomas'
           className='u-full-width'
           name='sintomas'
           onChange={handleChange}
           value={sintomas}
         ></textarea>
         <button
+          data-testid='btn-submit'
           type='submit'
           className='u-full-width button-primary'
         >Pedir Cita</button>
